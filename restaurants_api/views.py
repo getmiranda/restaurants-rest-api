@@ -12,12 +12,12 @@ from restaurants_api import models
 
 
 @swagger_auto_schema(
-    operation_description="Importa los datos del archivo csv a la BD.",
+    operation_description="Import data from csv file to DB.",
     methods=['post']
 )
 @api_view(['POST'])
 def import_data(request):
-    '''Importa los datos del archivo csv a la BD.'''
+    '''Import data from csv file to DB.'''
     restaurant_ids = [
         restaurant.id for restaurant in models.Restaurant.objects.all()
     ]
@@ -40,6 +40,17 @@ def import_data(request):
                     lng=row['lng']
                 )
                 restaurant.save()
+    return Response(status=status.HTTP_200_OK)
+
+
+@swagger_auto_schema(
+    operation_description="Delete data from DB.",
+    methods=['post']
+)
+@api_view(['POST'])
+def delete_data(request):
+    '''Delete data from DB.'''
+    models.Restaurant.objects.all().delete()
     return Response(status=status.HTTP_200_OK)
 
 
