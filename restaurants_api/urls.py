@@ -7,6 +7,8 @@ from restaurants_api import views
 router = DefaultRouter()
 router.register('restaurants', views.RestaurantViewSet)
 
+app_name = 'restautants'
+
 
 urlpatterns = [
     path('', include(router.urls)),

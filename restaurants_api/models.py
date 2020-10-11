@@ -3,7 +3,12 @@ from django.db import models
 
 class Restaurant(models.Model):
     """Database model for restaurants in the system"""
-    id = models.CharField(max_length=36, primary_key=True, null=False, unique=True)
+    id = models.CharField(
+        max_length=36,
+        primary_key=True,
+        null=False,
+        unique=True
+    )
     rating = models.IntegerField()
     name = models.CharField(max_length=255)
     site = models.CharField(max_length=255)

@@ -1,6 +1,5 @@
 import csv
 
-from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
@@ -13,7 +12,7 @@ from restaurants_api import models
 
 
 @swagger_auto_schema(
-    operation_description="Importa los datos del archivo csv a la BD.", 
+    operation_description="Importa los datos del archivo csv a la BD.",
     methods=['post']
 )
 @api_view(['POST'])
@@ -45,14 +44,14 @@ def import_data(request):
 
 
 @swagger_auto_schema(
-    operation_description="", 
+    operation_description="",
     methods=['GET']
 )
 @api_view(['GET'])
 def statistics(request):
     ''''''
     # http://127.0.0.1:8000/restaurants/statistics/?latitude=x&longitude=y&radius=z
-    
+
     return Response({
         'latitude': request.GET.get('latitude', ''),
         'longitude': request.GET.get('longitude', ''),
@@ -64,7 +63,7 @@ def statistics(request):
 
 
 class RestaurantViewSet(viewsets.ModelViewSet):
-    """    
+    """
     retrieve:
     Return the given restaurant.
 
@@ -82,7 +81,6 @@ class RestaurantViewSet(viewsets.ModelViewSet):
 
     destroy:
     Delete the given restaurant.
-    
     """
     serializer_class = serializers.RestaurantSerializer
     queryset = models.Restaurant.objects.all()
