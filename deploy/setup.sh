@@ -29,15 +29,15 @@ $PROJECT_BASE_PATH/env/bin/python manage.py migrate
 $PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput
 
 # Configure supervisor
-cp $PROJECT_BASE_PATH/deploy/supervisor_profiles_api.conf /etc/supervisor/conf.d/profiles_api.conf
+cp $PROJECT_BASE_PATH/deploy/supervisor_restaurants_api.conf /etc/supervisor/conf.d/restaurants_api.conf
 supervisorctl reread
 supervisorctl update
-supervisorctl restart profiles_api
+supervisorctl restart restaurants_api
 
 # Configure nginx
-cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
+cp $PROJECT_BASE_PATH/deploy/nginx_restaurants_api.conf /etc/nginx/sites-available/restaurants_api.conf
 rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/profiles_api.conf /etc/nginx/sites-enabled/profiles_api.conf
+ln -s /etc/nginx/sites-available/restaurants_api.conf /etc/nginx/sites-enabled/restaurants_api.conf
 systemctl restart nginx.service
 
 echo "DONE! :)"
