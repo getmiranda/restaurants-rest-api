@@ -10,4 +10,5 @@ router.register('restaurants', views.RestaurantViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('utils/import-data/', views.import_data, name='utils-import-data'),
 ]
