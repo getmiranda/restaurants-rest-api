@@ -14,3 +14,7 @@ class Restaurant(models.Model):
     state = models.CharField(max_length=255)
     lat = models.FloatField()
     lng = models.FloatField()
+
+    def __str__(self):
+        """Return string representation of our restaurant"""
+        return self.name
