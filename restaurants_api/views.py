@@ -44,6 +44,25 @@ def import_data(request):
     return Response(status=status.HTTP_200_OK)
 
 
+@swagger_auto_schema(
+    operation_description="", 
+    methods=['GET']
+)
+@api_view(['GET'])
+def statistics(request):
+    ''''''
+    # http://127.0.0.1:8000/restaurants/statistics/?latitude=x&longitude=y&radius=z
+    
+    return Response({
+        'latitude': request.GET.get('latitude', ''),
+        'longitude': request.GET.get('longitude', ''),
+        'radius': request.GET.get('radius', ''),
+        'count': 0,
+        'avg': 0,
+        'std': 0
+    })
+
+
 class RestaurantViewSet(viewsets.ModelViewSet):
     """    
     retrieve:
